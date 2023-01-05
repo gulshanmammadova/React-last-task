@@ -91,15 +91,15 @@ export default function AdminPanel() {
 
 
 
-  // const loadUsers = async () => {
-  //   const result = await axios.get("http://localhost:3009/posts");
-  //   setUsers(result.data);
-  //};
+//   const loadUsers = async () => {
+//     const result = await axios.get("http://localhost:3009/posts");
+//     setUsers(result.data);
+//   };
 
-  // const deleteUser = async (id) => {
-  //   await axios.delete(`http://localhost:3009/posts/${id}`);
-  //   loadUsers();
-  // };
+//   const deleteUser = async (id) => {
+//     await axios.delete(`http://localhost:3009/posts/${id}`);
+//     loadUsers();
+//   };
 // const DeleteHandler=(id)=>{
 //   const deleteUser=async()=>{
 //     await axios.delete(`http://localhost:3009/posts/${id}`)
