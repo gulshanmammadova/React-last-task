@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Users from './components/Users';
+import {BrowserRouter,Routes,Route  } from "react-router-dom";
+import AdminChecker from './components/AdminChecker';
+import HeaderPart from './components/HeaderPart.jsx';
+import UserTableSearch from './pages/UserTableSearch';
+import AdminPanel from './pages/AdminPanel.jsx'
+import EditUser from './components/EditUser';
+import AddUser from './components/AddUser';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+       <HeaderPart/>
+      <Routes>
+        <Route path='/' element={<Users/>}/>
+        <Route path='/admin' element={<AdminChecker/>}/>
+
+        <Route path='/filtereduser' element={<UserTableSearch/>}/> 
+        
+        {/* <Route path='/edituser' element={<EditUser/>}/> */}
+        <Route path='/adduser' element={<AddUser/>}/>
+        
+
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
