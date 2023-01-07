@@ -18,7 +18,7 @@ function App() {
 
         <Route path='/filtereduser' element={<UserTableSearch/>}/> 
         
-        {/* <Route path='/edituser' element={<EditUser/>}/> */}
+        <Route path='/edituser/:id' element={<EditUser />}/>
         <Route path='/adduser' element={<AddUser/>}/>
         
 

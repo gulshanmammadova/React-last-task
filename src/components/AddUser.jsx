@@ -2,14 +2,19 @@
 import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {  useNavigate } from 'react-router-dom';
 
 const AddUser = () => {
+
     const [name, setName] = useState('');
     
     const [username, setUsername] = useState('');
-  
+  const navigate=useNavigate();
+  const notify = () => toast.success('Successfully added!');
   const NameHandler=(e)=>{
     setName (e.target.value)
   }
@@ -19,6 +24,7 @@ const AddUser = () => {
 const UserHandler=(e)=>{
     e.preventDefault();
 const addUser=async()=>{
+ 
     const newUser={
     fname:name,
     username:username,
@@ -26,6 +32,11 @@ const addUser=async()=>{
     
     }
     await axios.post('http://localhost:3009/posts',newUser)
+   notify();
+    setTimeout(() => {
+        navigate('/')
+    }, 2000);
+    
 
 }
 addUser();
@@ -69,9 +80,14 @@ addUser();
                     />
                 </div>
                 <div className="mb-3 text-center">
-                    <button  className="btn btn-success"
-                    type='submit'
-                        onClick={UserHandler} >Add User</button>
+                        <button className="btn btn-success"
+                            type='submit'
+                            onClick={UserHandler} >Add User</button>
+                        <Toaster
+                            position="bottom-right"
+                            reverseOrder={false}
+                        />
+
                 </div>
                 </form>
  
