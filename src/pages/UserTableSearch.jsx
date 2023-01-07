@@ -1,30 +1,60 @@
+import React from 'react'
+import { useState,useEffect } from 'react';
+import axios from 'axios'
+const UserTableSearch = () => {
+    const [users,setUsers]=useState([])
+        const [value,setValue]=useState('');
+        useEffect(()=>{
+            const getUsers=async()=>{
+                const response=await axios.get('http://localhost:3009/posts')
+                console.log(response.data);   
+                setUsers(response.data)
+            }
+            getUsers();
+        },[])
+    
+    const InputHandler=(e)=>{
+        setValue(e.target.value)
+    }
+    const filteredUser=users.filter(user=>user.fname.toLowerCase().includes(value.toLocaleLowerCase()))
+    console.log(filteredUser)
+    
+      return (
+        <div className='container'>
+          <input onChange={InputHandler} type="text" placeholder='Search...'  className='form-control w-50 mx-auto my-3'/> 
 
-// const UserTableSearch = () => {
-//     const [users,setUsers]=useState([])
-//     const [value,setValue]=useState('');
-//     let [loading, setLoading] = useState(true);
-//     useEffect(()=>{
-//         const getUsers=async()=>{
-//             const response=await axios.get('https://www.melivecode.com/api/users')
-//             console.log(response.data);   
-//             setUsers(response.data)
-//         setLoading(false)
-//         }
-//         getUsers();
-//     },[])
+          <table className="table border shadow">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Avatar</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredUser.map((user, index) => (
+              <tr key={user.id}>
+              
+                <td >{user.id}</td>
+                <td>{
+                    <img
+                    src={`https://www.melivecode.com/users/${user.id}.png`}
+                    width={50}
+                    alt='Player'/>
+                }
+                </td>
 
-// const InputHandler=(e)=>{
-//     setValue(e.target.value)
-// }
-// const filteredUser=()=>{}
-//   return (
-//     <div>
-//       <input onChange={InputHandler} type="text" placeholder='Search...'  className='form-control w-50 mx-auto my-3'/>
-//    <UserList ulist={users} />
-  
-  
-//     </div>
-//   )
-// }
+                <td>{user.fname} { user.lname}</td>
+                <td>{user.username}</td>
+                <td>{user.email}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        </div>
+      )
+    
+}
 
-// export default UserTableSearch
+export default UserTableSearch

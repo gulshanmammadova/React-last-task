@@ -22,7 +22,8 @@ export default function AdminPanel() {
 
   return (
     <div className="container tablecls mt-5">
-      <div className="my-5 py-5  bos "></div>
+      <div className="my-5 py-5  bos ">
+      </div>
       <div className="alltable  ">
        <div className='addbtn'> 
        <Link to='/adduser'> <button className="btn  btn-primary  my-5 ">ADD</button>
@@ -51,9 +52,8 @@ export default function AdminPanel() {
                 }
                 </td>
 
-                <td>{user.fname}</td>
+                <td>{user.fname} { user.lname}</td>
                 <td>{user.username}</td>
-                <td>{user.email}</td>
                 <td>
                 
                   <Link
