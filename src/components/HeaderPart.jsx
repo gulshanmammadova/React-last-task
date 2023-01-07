@@ -10,7 +10,7 @@ const HeaderPart = () => {
               </div>
               <div className="right text-end col-lg-10  col-9 ">
               <Link to='/'>Home</Link>
-                 
+              <Link to='/filtereduser'>Search</Link>
                  <Link to='/admin'>Admin Panel</Link>
                     </div>
            </div>
