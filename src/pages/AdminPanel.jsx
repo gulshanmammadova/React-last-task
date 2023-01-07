@@ -7,11 +7,7 @@ import AddUser from "../components/AddUser";
 import toast, { Toaster } from 'react-hot-toast';
 export default function AdminPanel() {
   const [users, setUsers] = useState([]);
-  const { id } = useParams();
 
-  // useEffect(() => {
-  //   loadUsers();
-  // }, []);
   const notifydelete = () =>toast.error("User Deleted...!");
   useEffect(() => {
     GetUsers();
@@ -62,7 +58,7 @@ export default function AdminPanel() {
                 
                   <Link
                     className="btn btn-outline-primary mx-2"
-                    to={`/user/edituser/${user.id}`}
+                    to={`/edituser/${user.id}`}
                   >
                     Edit
                   </Link>
